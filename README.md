@@ -16,7 +16,7 @@
     -   [合约sendRawTransaction调用](#合约sendrawtransaction调用)
         -   [**`platonSendRawTransaction`**](#platonsendrawtransaction)
     -   [合约Event](#合约event)
-        -   [**`platongetTransactionReceipt`**](#platongettransactionreceipt)
+        -   [**`platonGetTransactionReceipt`**](#platongettransactionreceipt)
     -   [内置合约](#内置合约)
         -   [CandidateContract](#candidatecontract)
             -   [**`CandidateDeposit`**](#candidatedeposit)
@@ -290,7 +290,7 @@ _ data : Data?                          //交易hash
 
 ## 合约Event
 
-### **`platongetTransactionReceipt`**
+### **`platonGetTransactionReceipt`**
 
 
 **入参**
@@ -318,7 +318,7 @@ _ obj : AnyObject?                      //返回数据
             print("ERROR:invoke invokeNotify first!")
             return
         }
-        web3.eth.platongetTransactionReceipt(txHash: self.invokeNotifyHash!, loopTime: 15) { (result, data) in
+        web3.eth.platonGetTransactionReceipt(txHash: self.invokeNotifyHash!, loopTime: 15) { (result, data) in
             switch result{
             case .success:
                 if let receipt = data as? EthereumTransactionReceiptObject{
@@ -405,7 +405,7 @@ Extra描述
             case .success:
                 print("Transaction success")
                 if let data = data as? Data{
-                    web3.eth.platongetTransactionReceipt(txHash: data.toHexString(), loopTime: 15, completion: { (result, receipt) in
+                    web3.eth.platonGetTransactionReceipt(txHash: data.toHexString(), loopTime: 15, completion: { (result, receipt) in
                         if let receipt = receipt as? EthereumTransactionReceiptObject{
                             if String((receipt.status?.quantity)!) == "1"{
                                 let rlpItem = try? RLPDecoder().decode((receipt.logs.first?.data.bytes)!)
@@ -473,7 +473,7 @@ param1描述
             case .success:
                 print("CandidateApplyWithdraw success")
                 if let data = data as? Data{
-                    web3.eth.platongetTransactionReceipt(txHash: data.toHexString(), loopTime: 15, completion: { (result, receipt) in
+                    web3.eth.platonGetTransactionReceipt(txHash: data.toHexString(), loopTime: 15, completion: { (result, receipt) in
                         if let receipt = receipt as? EthereumTransactionReceiptObject{
                             if String((receipt.status?.quantity)!) == "1"{
                                 let rlpItem = try? RLPDecoder().decode((receipt.logs.first?.data.bytes)!)
@@ -535,7 +535,7 @@ param1描述
             case .success:
                 print("send Transaction success")
                 if let data = data as? Data{
-                    web3.eth.platongetTransactionReceipt(txHash: data.toHexString(), loopTime: 15, completion: { (result, receipt) in
+                    web3.eth.platonGetTransactionReceipt(txHash: data.toHexString(), loopTime: 15, completion: { (result, receipt) in
                         if let receipt = receipt as? EthereumTransactionReceiptObject{
                             if String((receipt.status?.quantity)!) == "1"{
                                 let rlpItem = try? RLPDecoder().decode((receipt.logs.first?.data.bytes)!)
@@ -622,7 +622,7 @@ param1描述
             case .success:
                 print("send Transaction success")
                 if let data = data as? Data{
-                    web3.eth.platongetTransactionReceipt(txHash: data.toHexString(), loopTime: 15, completion: { (result, receipt) in
+                    web3.eth.platonGetTransactionReceipt(txHash: data.toHexString(), loopTime: 15, completion: { (result, receipt) in
                         if let receipt = receipt as? EthereumTransactionReceiptObject{
                             if String((receipt.status?.quantity)!) == "1"{
                                 let rlpItem = try? RLPDecoder().decode((receipt.logs.first?.data.bytes)!)
