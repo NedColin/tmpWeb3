@@ -873,18 +873,23 @@ print("error code:\(code ?? 0) errMsg:\(errMsg ?? "")")
 
 合约使用：
 ```
-func VerifiersList(){
-contract.VerifiersList { (result, data) in
-switch result{
-case .success:
-if let data = data as? String{
-print("result:\(data)")
-}
-case .fail(let code, let errMsg):
-print("error code:\(code ?? 0) errMsg:\(errMsg ?? "")")
-}
-}
-}
+    func VerifiersList(completion: PlatonCommonCompletion?){
+        var completion = completion
+        let paramter = SolidityFunctionParameter(name: "whateverkey", type: .string)
+        
+        web3.eth.platonCall(code: ExecuteCode.ContractExecute, contractAddress: contractAddress, functionName: "VerifiersList", from: nil, params: [], outputs: [paramter]) { (result, data) in
+            switch result{
+            case .success:
+                if let dic = data as? Dictionary<String, String>{
+                    self.successCompletionOnMain(obj: dic["whateverkey"] as AnyObject, completion: &completion)
+                }else{
+                    self.successCompletionOnMain(obj: "" as AnyObject, completion: &completion)
+                }
+            case .fail(let code, let errorMsg):
+                self.failCompletionOnMainThread(code: code!, errorMsg: errorMsg!, completion: &completion)
+            }
+        }
+    }
 ```
 
 # web3
