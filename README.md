@@ -74,40 +74,40 @@ let web3 : Web3 = Web3(rpcURL: "http://192.168.1.100:6789")
 #include <platon/platon.hpp>
 
 namespace demo {
-class FirstDemo : public platon::Contract
-{
-public:
-FirstDemo(){}
+    class FirstDemo : public platon::Contract
+    {
+        public:
+            FirstDemo(){}
+			
+            /// 实现父类: platon::Contract 的虚函数
+            /// 该函数在合约首次发布时执行，仅调用一次
+            void init() 
+            {
+                platon::println("init success...");
+            }
 
-/// 实现父类: platon::Contract 的虚函数
-/// 该函数在合约首次发布时执行，仅调用一次
-void init() 
-{
-platon::println("init success...");
-}
+            /// 定义Event.
+            PLATON_EVENT(Notify, uint64_t, const char *)
 
-/// 定义Event.
-PLATON_EVENT(Notify, uint64_t, const char *)
+        public:
+            void invokeNotify(const char *msg)
+            {	
+                // 定义状态变量
+                platon::setState("NAME_KEY", std::string(msg));
+                // 日志输出
+                platon::println("into invokeNotify...");
+                // 事件返回
+                PLATON_EMIT_EVENT(Notify, 0, "Insufficient value for the method.");
+            }
 
-public:
-void invokeNotify(const char *msg)
-{    
-// 定义状态变量
-platon::setState("NAME_KEY", std::string(msg));
-// 日志输出
-platon::println("into invokeNotify...");
-// 事件返回
-PLATON_EMIT_EVENT(Notify, 0, "Insufficient value for the method.");
-}
-
-const char* getName() const 
-{
-std::string value;
-platon::getState("NAME_KEY", value);
-// 读取合约数据并返回
-return value.c_str();
-}
-};
+            const char* getName() const 
+            {
+                std::string value;
+                platon::getState("NAME_KEY", value);
+                // 读取合约数据并返回
+                return value.c_str();
+            }
+    };
 }
 
 // 此处定义的函数会生成ABI文件供外部调用
