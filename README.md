@@ -344,15 +344,15 @@ _ obj : AnyObject?                      //返回数据
 
 ```
 
-[comment]: <> (------------------> 内置合约)
-
 ## 内置合约
-[comment]: <> (------------------> CandidateContract)
+
+<!--- 1.1 CandidateContract -->
+
 ###  CandidateContract
 > PlatOn经济模型中候选人相关的合约接口 [合约描述]()
 
+<!--- 1.1 CandidateDeposit -->
 
-[comment]: <> (------------------> 1.CandidateDeposit)
 #### **`CandidateDeposit`**
 > 节点候选人申请/增加质押
 
@@ -442,7 +442,8 @@ Extra描述
     }
 ```
 
-[comment]: <> (------------------> 2.CandidateApplyWithdraw)
+<!--- 1.2 CandidateApplyWithdraw -->
+
 #### **`CandidateApplyWithdraw`**
 > 节点质押金退回申请，申请成功后节点将被重新排序，发起的地址必须是质押金退款的地址 from==owner
 
@@ -511,7 +512,8 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> 3.CandidateWithdraw)
+<!--- 1.3 CandidateWithdraw -->
+
 #### **`CandidateWithdraw`**
 > 节点质押金提取，调用成功后会提取所有已申请退回的质押金到owner账户。
 
@@ -574,7 +576,8 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> 4.SetCandidateExtra)
+<!--- 1.4 SetCandidateExtra -->
+
 #### **`SetCandidateExtra`**
 > 设置节点附加信息, 发起的地址必须是质押金退款的地址 from==owner
 
@@ -662,7 +665,8 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> 5.CandidateWithdrawInfos)
+<!--- 1.5 CandidateWithdrawInfos -->
+
 #### **`CandidateWithdrawInfos`**
 > 获取节点申请的退款记录列表
 
@@ -704,7 +708,7 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> 6.CandidateDetails)
+<!--- 1.6 CandidateDetails -->
 
 #### **`CandidateDetails`**
 > 获取候选人信息
@@ -760,7 +764,7 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> 7.GetBatchCandidateDetail)
+<!--- 1.7 GetBatchCandidateDetail -->
 
 #### **`GetBatchCandidateDetail`**
 > 批量获取候选人信息
@@ -821,7 +825,7 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> 8.CandidateList)
+<!--- 1.8 CandidateList -->
 
 
 #### **`CandidateList`**
@@ -877,8 +881,7 @@ param1描述
     }
 ```
 
-
-[comment]: <> (------------------> 9.VerifiersList)
+<!--- 1.9 VerifiersList -->
 
 #### **`VerifiersList`**
 > 获取参与当前共识的验证人列表
@@ -933,12 +936,13 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> VoteContract)
+<!--- 2 VoteContract -->
 
 ###  VoteContract
 > PlatOn经济模型中投票相关的合约接口 [合约描述]()
 
-[comment]: <> (------------------> 1.GetTicketPrice)
+<!--- 2.1 GetTicketPrice -->
+
 #### **`GetTicketPrice`**
 > 获取票价
 
@@ -970,7 +974,8 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> 2.GetPoolRemainder)
+<!--- 2.2 GetPoolRemainder -->
+
 #### **`GetPoolRemainder`**
 > 获取票价
 
@@ -1004,7 +1009,8 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> 3.GetCandidateEpoch)
+<!--- 2.3 GetCandidateEpoch -->
+
 #### **`GetCandidateEpoch`**
 > 获取候选人票龄
 
@@ -1041,7 +1047,8 @@ param1描述
 ```
 
 
-[comment]: <> (------------------> 4.GetTicketDetail)
+<!--- 2.4 GetTicketDetail -->
+
 #### **`GetTicketDetail`**
 > 获取票详情
 **入参**
@@ -1081,8 +1088,8 @@ param1描述
 ```
 
 
+<!--- 2.5 GetBatchTicketDetail -->
 
-[comment]: <> (------------------> 5.GetBatchTicketDetail)
 #### **`GetBatchTicketDetail`**
 > 批量获取票详情
 
@@ -1125,7 +1132,8 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> 6.GetBatchCandidateTicketIds)
+<!--- 2.6 GetBatchCandidateTicketIds -->
+
 #### **`GetBatchCandidateTicketIds`**
 > 批量获取候选人选票
 
@@ -1162,7 +1170,7 @@ param1描述
     }
 ```
 
-[comment]: <> (------------------> 7.VoteTicket)
+<!--- 2.7 VoteTicket -->
 #### **`VoteTicket`**
 > 给节点投票
 
