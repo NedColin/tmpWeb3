@@ -1185,7 +1185,7 @@ param1描述
 | privateKey  | String  | 私钥，需要与账户地址对应|
 | gasPrice  | BigUInt  | 手续费用，Energon价格|
 | gas  | BigUInt  | 手续费用，Energon数量|
-| completion  | ContractDeployCompletion  | 回调闭包|
+| completion  | PlatonCommonCompletion  | 回调闭包|
 
 
 出参（事件：--）：
